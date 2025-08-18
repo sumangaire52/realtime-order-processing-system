@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  auth-db:
+    image: postgres:16
+    container_name: auth_db
+    restart: always
+    environment:
+      POSTGRES_USER: suman
+      POSTGRES_PASSWORD: P@ssw0rd12345
+      POSTGRES_DB: auth_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - auth_data:/var/lib/postgresql/data
+
+  payment-db:
+    image: postgres:16
+    container_name: payment_db
+    restart: always
+    environment:
+      POSTGRES_USER: suman
+      POSTGRES_PASSWORD: P@ssw0rd12345
+      POSTGRES_DB: payment_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - payment_data:/var/lib/postgresql/data
+
+volumes:
+  auth_data:
+  payment_data:
